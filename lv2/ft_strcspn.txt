@@ -2,8 +2,6 @@
 
 ### Subject
 
-{% code overflow="wrap" %}
-
 ```
 Assignment name	: ft_strcspn
 Expected files	: ft_strcspn.c
@@ -18,7 +16,6 @@ The function should be prototyped as follows:
 size_t	ft_strcspn(const char *s, const char *reject);
 ```
 
-{% endcode %}
 
 ### Man Page
 
@@ -46,13 +43,6 @@ RETURN VALUES
 
 For this one, I'll give you two different examples, one will be done using indexes in the string `s` and `reject`. And the second example will use pointers directly.
 
-<details>
-
-<summary>Indexes</summary>
-
-{% code title="ft\_strcspn.c" overflow="wrap" lineNumbers="true" %}
-
-```c
 // Needed for size_t
 #include <stdio.h>
 

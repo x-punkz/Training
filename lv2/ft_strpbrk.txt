@@ -1,10 +1,6 @@
 # ft\_strpbrk
 
-This solution has been proposed by Duc Nguyen ([Find his Github link here ](https://github.com/nguyenduc-03/42Student))
-
 ### Subject
-
-{% code overflow="wrap" %}
 
 ```
 Assignment name	: ft_strpbrk
@@ -19,8 +15,6 @@ The function should be prototyped as follows:
 
 char	*ft_strpbrk(const char *s1, const char *s2);
 ```
-
-{% endcode %}
 
 ### Man page
 
@@ -47,13 +41,7 @@ RETURN VALUES
 
 ### Commented solution
 
-<details>
-
-<summary>ft_strpbrk()</summary>
-
-{% code overflow="wrap" lineNumbers="true" %}
-
-```c
+```
 char *ft_strpbrk(const char *s1, const char *s2)
 {
     int i = 0;
@@ -76,9 +64,6 @@ char *ft_strpbrk(const char *s1, const char *s2)
 }
 ```
 
-{% endcode %}
-
-</details>
 
 #### Explanation of  `char *re = (char *)s1;`
 

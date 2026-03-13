@@ -2,8 +2,6 @@
 
 ### Subject
 
-{% code overflow="wrap" %}
-
 ```
 Assignment name  : inter
 Expected files   : inter.c
@@ -30,17 +28,9 @@ $>./inter | cat -e
 $
 ```
 
-{% endcode %}
 
 ### Commented solution
 
-<details>
-
-<summary>inter.c</summary>
-
-{% code title="inter.c" overflow="wrap" lineNumbers="true" %}
-
-```c
 #include <unistd.h>
 
 int	ft_putchar(char c);
@@ -90,6 +80,3 @@ int	ft_putchar(char c)
 }
 ```
 
-{% endcode %}
-
-</details>

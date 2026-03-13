@@ -15,7 +15,17 @@ If the number of arguments is not 1, or the argument is not a positive number,
 just display 0 followed by a newline.
 
 Yes, the examples are right.
+--------------------------------------------------------------------------------
+Pt-BR
 
+Escreva um programa que receba um número inteiro positivo como argumento e exiba
+a soma de todos os números primos menores ou iguais a ele, seguido de uma new line.
+
+Se o número de argumentos não for 1, ou se o argumento não for um número positivo,
+basta exibir 0 seguido de uma nova linha.
+
+Sim, os exemplos estão corretos.
+---------------------------------------------------------------------------------
 Examples:
 
 $>./add_prime_sum 5

@@ -2,8 +2,6 @@
 
 ### Subject
 
-{% code overflow="wrap" %}
-
 ```
 Assignment name  : max
 Expected files   : max.c
@@ -20,19 +18,8 @@ the array.
 The function returns the largest number found in the array.
 
 If the array is empty, the function returns 0.
+
 ```
-
-{% endcode %}
-
-### Commented solution
-
-<details>
-
-<summary>max.c</summary>
-
-{% code overflow="wrap" lineNumbers="true" %}
-
-```c
 int		max(int* tab, unsigned int len)
 {
 	int count = 0;
@@ -61,6 +48,3 @@ int main()
 }
 ```
 
-{% endcode %}
-
-</details>
