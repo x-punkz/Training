@@ -25,7 +25,7 @@ char	*ft_itoa(int nbr)
 
 	i = 0;
 	size = c_digit(nbr);
-	conv = malloc(size + 1);// Aaqui da pra chapar 11 de tamanho(quant. de digitos de um inteiro)
+	conv = malloc(size + 1);
 	if (nbr < 0)
 	{
 		nbr *= -1;
