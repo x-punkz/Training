@@ -1,87 +1,47 @@
-# rotone
+/*
 
-### Subject
-
-{% code overflow="wrap" %}
-
-```
-Assignment name  : rotone
-Expected files   : rotone.c
-Allowed functions: write
+Assignment name  : search_and_replace
+Expected files   : search_and_replace.c
+Allowed functions: write, exit
 --------------------------------------------------------------------------------
 
-Write a program that takes a string and displays it, replacing each of its
-letters by the next one in alphabetical order.
+Write a program called search_and_replace that takes 3 arguments, the first 
+arguments is a string in which to replace a letter (2nd argument) by
+another one (3rd argument).
 
-'z' becomes 'a' and 'Z' becomes 'A'. Case remains unaffected.
+If the number of arguments is not 3, just display a newline.
 
-The output will be followed by a \n.
+If the second argument is not contained in the first one (the string)
+then the program simply rewrites the string followed by a newline.
 
-If the number of arguments is not 1, the program displays \n.
-
-Example:
-
-$>./rotone "abc"
-bcd
-$>./rotone "Les stagiaires du staff ne sentent pas toujours tres bon." | cat -e
-Mft tubhjbjsft ev tubgg of tfoufou qbt upvkpvst usft cpo.$
-$>./rotone "AkjhZ zLKIJz , 23y " | cat -e
-BlkiA aMLJKa , 23z $
-$>./rotone | cat -e
+Examples:
+$>./search_and_replace "Papache est un sabre" "a" "o"
+Popoche est un sobre
+$>./search_and_replace "zaz" "art" "zul" | cat -e
 $
-$>
-$>./rotone "" | cat -e
+$>./search_and_replace "zaz" "r" "u" | cat -e
+zaz$
+$>./search_and_replace "jacob" "a" "b" "c" "e" | cat -e
 $
-$>
-```
+$>./search_and_replace "ZoZ eT Dovid oiME le METol." "o" "a" | cat -e
+ZaZ eT David aiME le METal.$
+$>./search_and_replace "wNcOre Un ExEmPle Pas Facilw a Ecrirw " "w" "e" | cat -e
+eNcOre Un ExEmPle Pas Facile a Ecrire $
 
-{% endcode %}
+*/
 
-### Commented solution
-
-<details>
-
-<summary>rotone</summary>
-
-{% code title="rotone.c" overflow="wrap" lineNumbers="true" %}
-
-```c
 #include <unistd.h>
 
-int main(int ac, char *av[])
+int main(int ac, char **av)
 {
-    if (ac == 2)
-    {
-        int i;
-        
-        i = 0;
-        /* looping over the whole string
-         */
-        while (av[1][i])
-        {
-            /* checking if the character is Z or z
-             * if it's the case, we remove 25 to get A or a
-             * respectively
-             */
-            if (av[1][i] == 90 || av[1][i] == 122)
-                av[1][i] -= 25;
-            /* checking if the character is between Aa - Yy
-             * if it's the case, we can add 1 to it to get
-             * the next character
-             */
-            else if ((av[1][i] >= 65 && av[1][i] <= 89) || (av[1][i] >= 95 && av[1][i] <= 121))
-                av[1][i] += 1;
-            /* finally, we can write the character and increment the
-             * counter
-             */
-            write(1, &av[1][i], 1);
-            i++;
-        }
+    if (ac == 4 && !av[2][1] && !av[3][1]) {
+		int i = -1;
+		while(av[1][++i]) {
+			if(av[1][i] == av[2][0])
+				av[1][i] = av[3][0];
+			write(1, &av[1][i], 1);
+		}
     }
     write(1, "\n", 1);
+    return 0;    
 }
-```
-
-{% endcode %}
-
-</details>

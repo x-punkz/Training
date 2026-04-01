@@ -24,17 +24,6 @@ LIOP a 0bud$
 $> ./rev_print | cat -e
 $
 ```
-
-{% endcode %}
-
-### Commented solution
-
-<details>
-
-<summary>rev_print</summary>
-
-{% code title="rev\_print.c" overflow="wrap" lineNumbers="true" %}
-
 ```c
 #include <unistd.h>
 
@@ -58,7 +47,3 @@ int main(int ac, char *av[])
     write(1, "\n", 1);
 }
 ```
-
-{% endcode %}
-
-</details>

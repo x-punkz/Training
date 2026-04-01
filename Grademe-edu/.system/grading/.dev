@@ -1,0 +1,4 @@
+../../rendu/sort_list/sort_list.c: In function ‘sort_list’:
+../../rendu/sort_list/sort_list.c:8:7: warning: assignment to ‘t_list *’ {aka ‘struct s_list *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+    8 |  head = tmp;
+      |       ^

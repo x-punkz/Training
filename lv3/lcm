@@ -32,15 +32,35 @@ Your function must be prototyped as follows:
 
   unsigned int    lcm(unsigned int a, unsigned int b);
 ```
+----------------------
+Traduzido
+-------------------
+
+Escreva uma função que receba dois inteiros sem sinal como parâmetros e retorne o MMC (Mínimo Múltiplo Comum) desses parâmetros.
+O MMC (Mínimo Múltiplo Comum) de dois inteiros diferentes de zero é o menor inteiro positivo divisível por ambos os inteiros.
+
+O MMC pode ser calculado de duas maneiras:
+
+1 - Você pode calcular todos os múltiplos de cada inteiro até encontrar um múltiplo comum diferente de 0
+
+2 - Você pode usar o MCD (Máximo Divisor Comum) desses dois inteiros e
+calcular da seguinte forma:
+
+    MMC(x, y) = | x * y | / MCD(x, y)
+
+  | x * y | significa “Valor absoluto do produto de x por y”
+Se pelo menos um inteiro for nulo, o MMC é igual a 0.
+
+-------------------
+
+
+
 
 ### Commented solution
 
-<details>
-
-<summary>lcm</summary>
-
-{% code title="lcm.c" overflow="wrap" lineNumbers="true" %}
-
+--------------------------------
+Soluçao 1
+-------------------------------
 ```c
 unsigned int lcm(unsigned int a, unsigned int b)
 {
@@ -70,8 +90,42 @@ unsigned int lcm(unsigned int a, unsigned int b)
 // 		printf("LCM: %u\n", m);
 // 	}
 // }
+
+----------------------------------------
+Soluçao 2
+----------------------------------------
+unsigned int	pgcd(unsigned int x, unsigned int y)
+{
+	int res;
+	
+	if (x > y)
+		res = y;
+	else
+		res = x;
+	while (res >= 1)
+	{
+		if (x % res == 0 && y % res == 0)
+			return (res);
+		res--;
+	}
+	return (1);
+}
+
+unsigned int    lcm(unsigned int a, unsigned int b)
+{
+	return((a * b) / pgcd(a, b));
+}
+
+-----------------------
+Main p teste
+----------------
+
+#include <stdio.h>
+#include <stdlib.h>
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	printf("%d\n", lcm(atoi(argv[1]), atoi(argv[2])));
+}
+
 ```
-
-{% endcode %}
-
-</details>

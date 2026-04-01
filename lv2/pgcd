@@ -31,6 +31,9 @@ $
 ```
 
 ### Commented solution
+-----------------------------
+Soluçao 1 (n muito recomndada)
+-------------------------
 
 #include stdio.h>
 #include stdlib.h>
@@ -62,4 +65,19 @@ int main(int ac, char **av)
     }
     printf("\n");
 }
-</code></pr
+
+-------------------------
+Solucao 2
+------------------------
+int a, b, res;
+while (b != 0)
+{
+	res = a % b;
+	a = b;
+	b = res;
+}
+return (res);
+
+------------------------
+Soluçao 3
+--------------------

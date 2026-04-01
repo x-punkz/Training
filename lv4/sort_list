@@ -2,13 +2,6 @@
 
 ### Subject
 
-{% code overflow="wrap" %}
-
-```
-```
-
-{% endcode %}
-
 ```
 Assignment name  : sort_list
 Expected files   : sort_list.c
@@ -46,39 +39,152 @@ int ascending(int a, int b)
 ```
 
 ### Commented solution
-
-<details>
-
-<summary>sort_list</summary>
-
-{% code title="sort\_list.c" overflow="wrap" lineNumbers="true" %}
-
-```c
+-----------------
+Soluçao real
+---------------
+```
 #include "list.h"
-#include "unistd.h"
+#include <stdlib.h>
 
-t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
+int is_sorted(t_list *lst, int (*cmp)(int, int))
 {
-	int tmp;
-	t_list *head;
+    t_list *tmp = lst;
 
-	head = tmp;
-	while (lst != NULL && lst->next != NULL)
-	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			tmp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = tmp;
-			lst = head;
-		}
-		else
-			lst = lst->next;
-	}
-	return (head);
+    while (tmp)
+    {
+        if (tmp->next && !cmp(tmp->data, tmp->next->data))
+            return 0;
+        tmp = tmp->next;
+    }
+    return 1;
+}
+
+t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+{
+    t_list *tmp;
+    t_list *fwd;
+    int swap;
+
+    tmp = lst;
+    while (tmp)
+    {
+        fwd = lst->next;
+        while(fwd)
+        {
+            if (!cmp(tmp->data, fwd->data))
+            {
+                swap = tmp->data;
+                tmp->data = fwd->data;
+                fwd->data = swap;
+            }
+            tmp = fwd;
+            fwd = tmp->next;
+        }
+        tmp = lst;
+        if (is_sorted(lst, cmp))
+            break;
+    }
+    return lst;
 }
 ```
+-----------------------------------------------
+Soluçao com a main
+-------------------------------------------------
+# Pra rodar, é necessario trazer o list.h recebido pelo subject
+# para o diretorio do arquivo da funçao.
 
-{% endcode %}
+#include "list.h"
+#include <stdlib.h>
+
+int is_sorted(t_list *lst, int (*cmp)(int, int))
+{
+    t_list *tmp = lst;
+
+    while (tmp)
+    {
+        if (tmp->next && !cmp(tmp->data, tmp->next->data))
+            return 0;
+        tmp = tmp->next;
+    }
+    return 1;
+}
+
+t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+{
+    t_list *tmp;
+    t_list *fwd;
+    int swap;
+
+    tmp = lst;
+    while (tmp)
+    {
+        fwd = lst->next;
+        while(fwd)
+        {
+            if (!cmp(tmp->data, fwd->data))
+            {
+                swap = tmp->data;
+                tmp->data = fwd->data;
+                fwd->data = swap;
+            }
+            tmp = fwd;
+            fwd = tmp->next;
+        }
+        tmp = lst;
+        if (is_sorted(lst, cmp))
+            break;
+    }
+    return lst;
+}
+
+int cmp(int a, int b) {
+    return (a <= b);
+}
+
+// Função auxiliar para criar novos nós
+t_list *new_node(int val) {
+    t_list *node = malloc(sizeof(t_list));
+    node->data = val;
+    node->next = NULL;
+    return node;
+}
+
+#include <stdio.h>
+// Função para imprimir a lista
+void print_list(t_list *lst) {
+    while (lst) {
+        printf("%d%s", lst->data, lst->next ? " -> " : "\n");
+        lst = lst->next;
+    }
+}
+
+int main(void) {
+    // Criando uma lista: 42 -> 7 -> 13 -> 5
+    t_list *l = new_node(42);
+    l->next = new_node(7);
+    l->next->next = new_node(13);
+    l->next->next->next = new_node(5);
+
+    printf("Lista Original: ");
+    print_list(l);
+
+    // Ordenando
+    l = sort_list(l, cmp);
+
+    printf("Lista Ordenada: ");
+    print_list(l);
+    printf("\n");
+
+    // Liberar memória (boa prática)
+    t_list *tmp;
+    while (l) {
+        tmp = l;
+        l = l->next;
+        free(tmp);
+    }
+
+    return 0;
+}
+
 
 </details>

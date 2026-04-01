@@ -27,15 +27,10 @@ typedef struct    s_list
 
 ## Commented solution
 
-{% hint style="warning" %}
-Don't forget to turn in your `ft_list.h` file as well
-{% endhint %}
+AVISO!!!!
+Nao submeta o arquivo `ft_list.h`
 
 <details>
-
-<summary>ft_list_size()</summary>
-
-{% code title="ft\_list\_size.c" overflow="wrap" lineNumbers="true" %}
 
 ```c
 #include "ft_list.h"
@@ -44,19 +39,52 @@ int ft_list_size(t_list *begin_list)
 {
     int i = 0;
     
-    // Loop over list elements while the next element is not null
     while (begin_list->next)
     {
-        // set the original pointer equal to a pointer to the
-        // next element and increment our counter
         begin_list = begin_list->next;
         i++;
     }
-    // return the counter
     return (i);
 }
-```
 
-{% endcode %}
+```
+---------------------------
+Soluçao com a main
+--------------------------
+
+int ft_list_size(t_list *begin_list)
+{
+    int i = 0;
+
+    while (begin_list->next)
+    {
+        begin_list = begin_list->next;
+        i++;
+    }
+    return (i);
+}
+
+// Função auxiliar para criar um novo nó
+t_list *ft_lstnew(void *content)
+{
+    t_list *new = malloc(sizeof(t_list));
+    if (!new)
+        return (NULL);
+    new->content = content;
+    new->next = NULL;
+    return (new);
+}
+
+int main(void)
+{
+    t_list *head = NULL;
+    
+    // Lista com 3 elementos
+    head->data = ft_lstnew("Primeiro");
+    head->next = ft_lstnew("Segundo");
+    head->next->next = ft_lstnew("Terceiro");
+    printf("%d\n", ft_lstsize(head));
+}
+
 
 </details>
